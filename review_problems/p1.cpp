@@ -1,23 +1,42 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-void swapValues(int* val1, int* val2) {
-    int temp = *val1;
-    *val1 = *val2;
-    *val2 = temp;
-}
+class Rectangle {
+    private:
+        int length;
+        int width;
+
+    public:
+        Rectangle(int l = 0, int w = 0) {
+            length = l;
+            width = w;
+        }
+
+        Rectangle(const Rectangle& other) {
+            length = other.length;
+            width = other.width;
+        }
+
+        ~Rectangle() {
+            cout << "Deleting rectnagle of (length, width) = (" << length << "," << width << ").\n"; 
+        }
+
+        int area() {
+            return length * width;
+        }
+
+        void display() {
+            cout << "Length: " << length << ", Width: " << width << ", Area: " << area() << endl;;
+        }
+
+};
 
 int main() {
-    int x = 10; 
-    int y = 20; 
-
-    cout << "Before swap:" << endl;
-    cout << "x = " << x << ", y = " << y << endl;
-
-    swapValues(&x, &y);
-
-    cout << "After swap:" << endl;
-    cout << "x = " << x << ", y = " << y << endl;
+    Rectangle rect1(3, 4);
+    Rectangle rect2(6, 7);
+    
+    rect1.display();
+    rect2.display();
 
     return 0;
 }
